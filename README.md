@@ -35,18 +35,13 @@ In the initial data preparation phase, we performed the following tasks:
 
 ### Exploratory Data Analysis
 EDA involved exploring the sales data to answer key questions, such as:
-1. How are bellabeat products mostly used
 2. What Bellabeat feature is mostly used
 3. What bellabeat feature in used the least
-4. How active are Bellabeat users
 5. Calorie count to see what time of day id most active
 6. Minutes for different minute level output for physical activity
-7. Activity levels compared to BMI
-8. How many people logged sleep
-9. Average sleep hours
-10. Days of the week most people use the device (calorie count)
-11. See BMI to see what body type od most common with sample of users
-12. Compare average steps, calories burned, and heart rate across these groups
+7. Activity levels compared to BMI *
+10. Days of the week most people use the device (calorie count) *
+11. See BMI to see what body type od most common with sample of users *
 
 ### Data Analysis
 
@@ -54,3 +49,42 @@ The Data analysis was done in excel and SQL
 
 #### Excel
 In Excel,  I cleaned and transformed the data. I ensured that there were no dublicates, nulls or outliers. I removed data that I was not working with such as: total Distance, Trackerdistance, loggedActivity, VeryActiveDistance, LightActiveDistance, ModeratelyActiveDistance, and SedentaryActiveDistance. From the weightloginfo data I erased the Weight KG and the Fat as well as the LogId. To standardize the numbers I rounded the number in the "TotalDistance", "TrackerDistance”, “VeryAcvtiveDistance”, “ModeratelyActiveDistance”, “sedentartyActiveDistance” zero decimal points. I made sure that the formatting was cinsistnent and that the column header descriptions were descriptive and unique. I created summary statistics (mean, median, standard deviation) for numeric columns. I also Extracted time from Columns with datet and time using =TEXT(B2, “hh:mm:ss AM/PM”) to make time easier to work with. 
+
+###SQL In SQL u uploaded dafsdfasd to do exploratory data analysis. 
+
+The first query the I made was to firgure out the average calorie count per day of the week. I made a common table expression named daysofweek that calculated the average calories per day of the week. Then I referenced the day of the week alias in the outer query to display the day names.
+``` SQL
+WITH daysofweek AS (
+  SELECT
+    EXTRACT(DAYOFWEEK FROM ActivityHour) AS dayofweek,
+    ROUND(AVG(calories), 2) AS Calorie_Count
+  FROM valid-bedrock-431220-f1.Fitbit.hourlyCalories_merged
+  GROUP BY 1
+)
+SELECT
+  CASE
+    WHEN dayofweek = 1 THEN 'Sunday'
+    WHEN dayofweek = 2 THEN 'Monday'
+    WHEN dayofweek = 3 THEN 'Tuesday'
+    WHEN dayofweek = 4 THEN 'Wednesday'
+    WHEN dayofweek = 5 THEN 'Thursday'
+    WHEN dayofweek = 6 THEN 'Friday'
+    WHEN dayofweek = 7 THEN 'Saturday'
+  END AS Weekday, Calorie_Count
+FROM daysofweek;
+```
+
+Then I wanted to figure out the users steps compared to thier BMI. There were some limitations with this data as we do not know age or height of participlants. This would leave us with queations on whether BMI is an accurate calulcation of the indiviuals health and body type. Here we used an inner join to get ID that are in both tables.
+```SQL
+SELECT daily.id, ROUND(AVG(weight.BMI),0) AS Average_BMI, SUM(daily.totalsteps) AS Total_Steps
+FROM valid-bedrock-431220-f1.Fitbit.DailyActivity_merged AS daily
+INNER JOIN valid-bedrock-431220-f1.Fitbit.weightLoginfo AS weight
+ON daily.id = weight.id
+GROUP BY 1
+ORDER BY 2 DESC
+```
+
+
+
+
+
