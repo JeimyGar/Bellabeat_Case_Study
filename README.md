@@ -99,4 +99,8 @@ The analysis results are summarized as follows:
  
 4. In this scatterplot titled "Step Count vs. BMI" we can see the relationship between body mass index (BMI) and step count. We can see that there is a negative correlation between BMI and step count. This would lead us to believe that as BMI increases, step count tends to decrease. There are some outliers in this data.
  ![bella 4](https://github.com/user-attachments/assets/516e2fc8-1498-4d96-821b-c953b9902505)
-5 In excel...
+5 In excel I added up the distinct ids for the users who uploaded info for heart rate, sleep log, and weight log. There were 30 total users in the dataset. As we can see, 24 out of the 30 users input their data at some point. The data with the least imput is heart_rate with only 10 out of the 30 users submitting their data. 
+<img width="319" alt="excel" src="https://github.com/user-attachments/assets/d97e6bc1-839d-4c27-8cd7-3b473231081d">
+
+### Recommendations
+Based on the results
