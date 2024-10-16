@@ -83,8 +83,20 @@ ON daily.id = weight.id
 GROUP BY 1
 ORDER BY 2 DESC
 ```
+### Results/Findings
 
+The analysis results are summarized as follows:
+1. This bar graph displays the total step count on the y-axis and the weekdays on the x-axis. Each day of the week has the total sum of steps taken for that day throught the whole duration of the data. We can see that there is a spike of activity on saturday and as the week progresses the activity seems to slow down. 
 
+![bella1](https://github.com/user-attachments/assets/c317dd0b-6f87-44b8-9bc2-eaf6d9ff51f0)
 
+2. This Pie chart shows the break down of proportion in activity level minutes. The activity levels here mentioned are lightly active, very active and fairly active. These activity levels are determined by monitoring heart rate. As we can see, most user opt for light activities.   
+![bella2](https://github.com/user-attachments/assets/b09bdca7-ca90-4c7e-b30b-eefc70959da6)
 
+3. In this bar box and whisker plot I plotted the weight distribution of the participants. We can see that the average weight for these is 176 lbs. The interquartile range is from 200 to 138 lbs with a max weight of 286 and a min weight of 118.
 
+ ![bella3](https://github.com/user-attachments/assets/9dd4ce56-aeb6-4a35-90a6-7ad18e6b91a5)
+ 
+4. In this scatterplot titled "Step Count vs. BMI" we can see the relationship between body mass index (BMI) and step count. We can see that there is a negative correlation between BMI and step count. This would lead us to believe that as BMI increases, step count tends to decrease. There are some outliers in this data.
+ ![bella 4](https://github.com/user-attachments/assets/516e2fc8-1498-4d96-821b-c953b9902505)
+5 In excel...
