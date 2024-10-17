@@ -103,4 +103,10 @@ The analysis results are summarized as follows:
 <img width="319" alt="excel" src="https://github.com/user-attachments/assets/d97e6bc1-839d-4c27-8cd7-3b473231081d">
 
 ### Recommendations
-Based on the results
+Based on the results there are a few things that stand out. 
+
+- Weekly Motivation: Based on the weekly activity chart that I created, we can see that saturday is the most active day of the week. As the weekday progresses, the activity levels decrease. To combat this decrease in activity to can implement several different things. We can launch special week challenges and rewards to boots. This would boost engagement in current and new users. We can also promote a feature where users can set goals and earn rewards, badges and discounts for achieving their milestones
+- Activity Motivation: The data colleted shows that most of the activity intensity levels are spent doing light activity. Bellabeat can promote activity level monitoring and encourage users to set activity level goals that the bellabeat devices monitor and reward you on.
+- Personanalized Insights: There seems to be a negative correlation between BMI and step count. We can use this to offer tailored fitness and nutrion plans based on BMI and activity levels for a set BMI goal or avtitity goal the users can set. 
+- Heart rate and sleep tracking: Out of 30 users ? logged sleep and ? logged heart rate. We can increase the number of users by emphasizing the importance of sleep and heart rate monitoring. We can also promote insight and data summarizion tools to encourage consistent use.
+- Commumity Engagment: Based on all the data that is collected we can foster a a sense of community by creating social groups where users can shair their progress and the achievments and rewards they have earned in the previuosly stated motivations. This can encourage people and keep them motivated. 
