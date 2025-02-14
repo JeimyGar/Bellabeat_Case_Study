@@ -13,10 +13,11 @@
 Analyzing smart device fitness data to unlock new growth opportunities for Bellabeat. 
 
 ### Project Overview
-Bellabeat is a high-tech company that manufactures health-focused smart devices for women. These smart devices collect data related to their activity, sleep, stress, menstrual cycle and mindfulness habits. We are analyzing smart device data to gain insight into how people are already using their smart devices. With this information, I will give high-level recommendations for how these trends can transform Bellabeats marketing strategy. 
+Bellabeat is a high-tech company that manufactures health-focused smart devices for women. These smart devices collect data on  activity, sleep, stress, menstrual cycle, and mindfulness habits. I am analyzing smart device data to understand how people already use their smart devices. With this information, I will give recommendations for how these trends can transform Bellabeats marketing strategies.  
 
 ### Data Sources
-The primary datasets used for this analysis are the "Fitbit Fitness Tracker Data" from Kaggle that can be found [here](https://www.kaggle.com/datasets/arashnic/fitbit). This dataset was generated between 03.12.2016 and 05.12.2016 and consisted of 30 Fitbit users who consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. Individual reports can be distinguished by a distinct ID or timestamp. There were some limitations to this data as we did not know the age or gender of any of these participants.
+The primary dataset used for this analysis is the "Fitbit Fitness Tracker Data" from Kaggle, which can be found [here](https://www.kaggle.com/datasets/arashnic/fitbit). This dataset was generated between 03.12.2016 and 05.12.2016. It consisted of 30 Fitbit users who consented to submit personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. A distinct ID or timestamp can distinguish individual reports. This data had some limitations as we did not know the age or gender of any of these participants.
+
 ### Tools
 
 - Excel - Data Cleaning, Pivot Chart 
@@ -33,24 +34,24 @@ In the initial data preparation phase, we performed the following tasks:
 
 ### Exploratory Data Analysis
 EDA involved exploring the Fitbit data to answer key questions, such as:
-1. What Fitbit feature is mostly used?
+1. What Fitbit feature is mainly used?
 2. What Fitbit feature is used the least?
 3. When are users the most and least active?
 4. What type of activity are users spending their time on?
 5. How does BMI impact user frequency?
-6. How do users' activity level impact how the features are used?
+6. How do users' activity levels impact how the features are used?
 
 ### Data Analysis
 
-The Data analysis was done in Excel and SQL. 
+The data analysis was done using Excel and SQL. 
 
 #### Excel
-In Excel,  I cleaned and transformed the data. I ensured that there were no duplicates, nulls or outliers. I removed data that I was not working with such as: total Distance, Trackerdistance, loggedActivity, VeryActiveDistance, LightActiveDistance, ModeratelyActiveDistance, and SedentaryActiveDistance. To standardize the numbers I rounded the number in the "TotalDistance", "TrackerDistance”, “VeryAcvtiveDistance”, “ModeratelyActiveDistance”, “sedentartyActiveDistance” zero decimal points. I made sure that the formatting was consistent and that the column header descriptions were descriptive and unique. I created summary statistics (mean, median, standard deviation) for numeric columns. I also extracted time from columns with date and time information using =TEXT(B2, “hh:mm:ss AM/PM”) to make time easier to work with.  
+In Excel,  I cleaned and transformed the data. I ensured that there were no duplicates, nulls, or outliers. I removed data that I was not working with such as: ‘total Distance’, ‘Trackerdistance’, ‘loggedActivity’, ‘VeryActiveDistance’, ‘LightActiveDistance’, ‘ModeratelyActiveDistance’, and ‘SedentaryActiveDistance’. To standardize the numbers, I rounded the number in the ‘TotalDistance’, ‘TrackerDistance’, ‘VeryAcvtiveDistance’, ‘ModeratelyActiveDistance’, and ‘sedentartyActiveDistance’ zero decimal points. I ensured the formatting was consistent and the column header descriptions were descriptive and unique. I created summary statistics (mean, median, standard deviation) for the numeric columns. I also extracted time from columns with date and time information using =TEXT(B2, “hh:mm:ss AM/PM”) to make it simpler to work with.   
 
 #### SQL 
-In SQL I uploaded our fitbit data to do exploratory data analysis. The queries are shown and explained below and the results from these queries are presented and explained in the results/findings section. 
+I uploaded our Fitbit data in SQL to do exploratory data analysis. The queries are shown and explained below, and the results from these queries are presented and explained in the results/findings section.
 
-The first query I made was to calculate the average and total number of steps per day of the week. Using a CTE I first grouped the data by day of the week as well as by the average and total steps. Then I used a case statement to convert the numeric days of the week into their corresponding weekday names. This is important information to see what days users are most and least active.  
+My first query was to calculate the average and total number of steps per day of the week. Using a CTE, I first grouped the data by day of the week and by the average and total steps. Then, I used a case statement to convert the numeric days of the week into their corresponding weekday names. This is important information to see what days users are most and least active.  
 ``` SQL
 WITH daysofweek AS (
   SELECT
@@ -72,7 +73,7 @@ SELECT
 FROM daysofweek;
 ```
 
-Next, I wanted to figure out how the users' steps compared to their BMI. We do have to remember that there were limitations with this data as we do not know age, height or gender of participants. This is important because BMI is not always an accurate calculation of an individual's health and body type. In this query we gathered the the average BMI rounded to the nearest whole number as well as the sum of total steps.  I then joined two tables using an inner join to ensure only matching records from both tables were included. 
+Next, I wanted to determine how the users' steps compared to their BMI. We do have to remember that there were limitations with this data as we do not know the age, height, or gender of participants. This is important because BMI is not always an accurate calculation of an individual's health and body type. In this query, we gathered the the average BMI rounded to the nearest whole number and the sum of ‘totalsteps’.  I then joined two tables using an inner join to ensure that only matching records from both tables were included. 
 ```SQL
 SELECT daily.id, ROUND(AVG(weight.BMI),0) AS Average_BMI, SUM(daily.totalsteps) AS Total_Steps
 FROM valid-bedrock-431220-f1.Fitbit.DailyActivity_merged AS daily
@@ -81,7 +82,7 @@ ON daily.id = weight.id
 GROUP BY 1
 ORDER BY 2 DESC
 ```
-Here we got the average weight and average BMI for the users who submitted data. Since some of the user's input their weight more than once I got the average weight for each user. This weight was also rounded to the nearest whole number as was the average BMI. We again have limitations for not knowing height, weight or other demographics. 
+Here, we get the average weight and average BMI for the users who submitted data. Since some of the users input their weight more than once, I got the average weight for each user. This weight was also rounded to the nearest whole number, as was the average BMI. Again, we have limitations because we don't know height, weight, or other demographics. 
 
 ```SQL
 SELECT Id, Ismanualreport, ROUND(AVG(weightpounds),0) AS average_weight, ROUND(AVG(BMI),0) as Average_BMI
