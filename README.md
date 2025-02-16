@@ -89,7 +89,7 @@ SELECT Id, Ismanualreport, ROUND(AVG(weightpounds),0) AS average_weight, ROUND(A
 FROM valid-bedrock-431220-f1.Fitbit.weightLoginfo
 GROUP BY 1,2;
 ```
-Lastly, this next query is to see the total minutes of each activity level. I calculated the total number of minutes for each activity level and gave it an alias. 
+This last query is is to see the total minutes of each activity level. I calculated the total number of minutes for each activity level and gave it an alias. 
 ```SQL
 SELECT SUM(VeryActiveMinutes) AS Total_VeryActive_Minutes, SUM(FairlyActiveminutes) AS Total_FairlyActive_Minutes, SUM(LightlyActiveminutes) AS Total_LightlyActive_Minutes, SUM(sedentaryminutes) AS Total_Sedentary_Minutes, SUM(calories) AS Total_Calories_Burned
 FROM valid-bedrock-431220-f1.Fitbit.DailyActivity_merged;
@@ -97,11 +97,11 @@ FROM valid-bedrock-431220-f1.Fitbit.DailyActivity_merged;
 ### Results/Findings
 
 The analysis results are summarized as follows:
-1. This bar graph displays the total step count on the y-axis and the weekdays on the x-axis. Each day of the week has the total sum of steps taken for that day throughout the whole duration of the data set. We can see that there is a spike of activity on saturday and as the week progresses the activity seems to slow down. 
+1. This bar graph displays the total step count on the y-axis and the weekdays on the x-axis. Each day of the week has the total sum of steps taken for that day throughout the whole duration of the data set. We can see a spike in activity on Saturday and as the week progresses, the activity seems to slow down.  
 
 ![bella1](https://github.com/user-attachments/assets/c317dd0b-6f87-44b8-9bc2-eaf6d9ff51f0)
 
-2. This Pie chart shows the breakdown of how much time is spent per each activity level. The activity levels here mentioned are: lightly active, very active and fairly active. These activity levels are determined by monitoring heart rate. As we can see, most users spend their time doing light activities.    
+2. This Pie chart shows the breakdown of how much time is spent per each activity level. The activity levels here mentioned are: lightly active, very active, and fairly active. These activity levels are determined by monitoring heart rate. As we can see, most users spend their time doing light activities.     
 ![bella2](https://github.com/user-attachments/assets/b09bdca7-ca90-4c7e-b30b-eefc70959da6)
 
 3. In this bar box and whisker plot I plotted the weight distribution of the participants. We can see that the average weight for these is 176 lbs. The interquartile range is from 200 to 138 lbs with a max weight of 286 and a min weight of 118.
@@ -110,13 +110,13 @@ The analysis results are summarized as follows:
  
 4. In this scatterplot titled "Step Count vs. BMI" we can see the relationship between body mass index (BMI) and step count. We can see that there is a negative correlation between BMI and step count. This would lead us to believe that as BMI increases, step count tends to decrease. There are some outliers in this data.
  ![bella 4](https://github.com/user-attachments/assets/516e2fc8-1498-4d96-821b-c953b9902505)
-5 In excel I added up the distinct ids for the users who uploaded info for heart rate, sleep log, and weight log. There were 30 total users in the dataset. As we can see, 24 out of the 30 users input their data at some point. The data with the least information is heart_rate with only 10 out of the 30 users submitting their data. 
+5 In Excel I totaled the distinct ids for the users who uploaded info for heart rate, sleep log, and weight log. There were 30 total users in the dataset. As we can see, 24 out of the 30 users input their data at some point. The data with the least information is heart_rate with only 10 out of the 30 users submitting their data. 
 <img width="319" alt="excel" src="https://github.com/user-attachments/assets/d97e6bc1-839d-4c27-8cd7-3b473231081d">
 
 ### Recommendations
 Based on the results there are a few things that stand out. 
 
-- Weekly Motivation: Based on the weekly activity chart that I created, we can see that Saturday is the most active day of the week. As the weekday progresses, the activity levels decrease. To combat this decrease in activity, we can implement several different things. We can launch special week challenges and rewards to boost participation. This would boost engagement in current and new users. We can also promote a feature where users can set goals and earn rewards, badges and discounts for achieving their milestones
+- Weekly Motivation: Based on the weekly activity chart that I created, we can see that Saturday is the most active day of the week. As the weekday progresses, the activity levels decrease. To combat this decrease in activity, we can implement several tactics. We can launch special week challenges and rewards to boost participation. This would boost engagement with current and new users. We can also promote a feature where users can set goals and earn rewards, badges and discounts for achieving their milestones
 - Activity Motivation: The data collected shows that most of the activity intensity levels are spent doing light activity. Bellabeat can promote activity level monitoring and encourage users to set activity level goals that the Bellabeat devices monitor and reward you on.
 - Personalized Insights: There seems to be a negative correlation between BMI and step count. We can use this to offer tailored fitness and nutrition plans based on BMI and activity levels for a BMI goal or activity goal the users can set. 
 - Heart rate and sleep tracking: Out of 30 users 24 logged sleep and 10 logged heart rate. We can increase the number of users by emphasizing the importance of sleep and heart rate monitoring. We can also promote insight and data summarization tools to encourage consistent use.
